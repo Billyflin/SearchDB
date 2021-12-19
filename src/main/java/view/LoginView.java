@@ -34,9 +34,11 @@ public class LoginView extends JFrame {
             if(acceso){
                init();
             }
-        }else if(loginRut.getText()==null||loginRut.getText().equals("")) {
+        }
+        if(loginRut.getText()==null||loginRut.getText().equals("")) {
             label4.setText("Ingrese Usuario");
-        }else if(loginPass.getText()==null||loginPass.getText().equals("")) {
+        }
+        if(loginPass.getText()==null||loginPass.getText().equals("")) {
             label4.setText("Ingrese Contraseña");
         }
     }

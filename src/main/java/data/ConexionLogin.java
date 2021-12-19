@@ -3,7 +3,7 @@ package data;
 import java.sql.*;
 
 public class ConexionLogin extends ConectionData {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/login";
+    private static final String DB_URL = "jdbc:mysql://181.226.110.208:3306/Login";
     private static final String USER = "root";
     private static final String PASS = "0208";
 
@@ -42,7 +42,7 @@ public class ConexionLogin extends ConectionData {
 
     public ResultSet buscarRegistro(String rut,String pass) throws SQLException {
 
-        QUERY = "SELECT * FROM login.login" +
+        QUERY = "SELECT * FROM Login.login" +
                 " WHERE rut = ? and pass = ?";
         preparedStatement = connection.prepareStatement(QUERY);
         preparedStatement.setString(1, rut);
@@ -51,7 +51,7 @@ public class ConexionLogin extends ConectionData {
     }
     public ResultSet buscarRegistro(String ID) throws SQLException {
 
-        QUERY = "SELECT * FROM login.login" +
+        QUERY = "SELECT * FROM Login.login" +
                 " WHERE id = ?";
         preparedStatement = connection.prepareStatement(QUERY);
         preparedStatement.setString(1, ID);

@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -52,7 +53,7 @@ public class FomularioView extends JFrame {
            pacienteData.add(Rut);
            pacienteData.add(textField1.getText());
            pacienteData.add(textField2.getText());
-           pacienteData.add(String.valueOf(xDatePicker1.getDate().toInstant()));
+           pacienteData.add(String.valueOf(xDatePicker1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
            pacienteData.add(textField3.getText());
            pacienteData.add(textField4.getText());
            pacienteData.add(String.valueOf(checkBox1.isSelected()));

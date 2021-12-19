@@ -7,6 +7,7 @@ package view;
 import java.awt.event.*;
 import utilities.IDgen;
 import service.LoginService;
+import utilities.Rut;
 
 import java.awt.*;
 import javax.swing.*;
@@ -28,7 +29,7 @@ public class RegisterView extends JFrame {
 
     private void ok(ActionEvent e) {
         // TODO add your code here
-        if(notEmpty()&&Equals()&&rutValido(textField1.getText())){
+        if(notEmpty()&&Equals()&& Rut.rutValido(textField1.getText())){
             runFormulario(label5.getText(),textField1.getText());
             register();
             dispose();
@@ -41,6 +42,8 @@ public class RegisterView extends JFrame {
         var servicio= new LoginService();
         servicio.register(textField1.getText(),passwordField1.getText(),0,label5.getText());
     }
+
+
 
     private void runFormulario(String id,String rut){
         javax.swing.SwingUtilities.invokeLater(new Runnable() {

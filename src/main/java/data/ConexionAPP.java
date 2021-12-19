@@ -5,7 +5,7 @@ import model.Paciente;
 import java.sql.*;
 
 public class ConexionAPP extends ConectionData {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/DrSearch";
+    private static final String DB_URL = "jdbc:mysql://181.226.110.208:3306/DrSearch";
     private static final String USER = "root";
     private static final String PASS = "0208";
 
