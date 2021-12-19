@@ -1,7 +1,5 @@
 package data;
 
-import interfaz.ConectionData;
-
 import java.sql.*;
 
 public class ConexionLogin extends ConectionData {

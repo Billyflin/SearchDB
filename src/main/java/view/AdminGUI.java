@@ -12,7 +12,7 @@ import javax.swing.GroupLayout;
 import javax.swing.border.*;
 import org.jdesktop.swingx.*;
 import service.EspecialistService;
-import service.IDgen;
+import utilities.IDgen;
 
 /**
  * @author Billy Martinez

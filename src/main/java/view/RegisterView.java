@@ -5,7 +5,7 @@
 package view;
 
 import java.awt.event.*;
-import service.IDgen;
+import utilities.IDgen;
 import service.LoginService;
 
 import java.awt.*;
@@ -40,29 +40,6 @@ public class RegisterView extends JFrame {
     private void register() {
         var servicio= new LoginService();
         servicio.register(textField1.getText(),passwordField1.getText(),0,label5.getText());
-    }
-
-    private boolean rutValido(String rut) {
-
-            boolean validacion = false;
-            try {
-                rut =  rut.toUpperCase();
-                rut = rut.replace(".", "");
-                rut = rut.replace("-", "");
-                int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
-
-                char dv = rut.charAt(rut.length() - 1);
-
-                int m = 0, s = 1;
-                for (; rutAux != 0; rutAux /= 10) {
-                    s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
-                }
-                if (dv == (char) (s != 0 ? s + 47 : 75)) {
-                    validacion = true;
-                }
-            } catch (Exception ignored) {
-            }
-        return validacion;
     }
 
     private void runFormulario(String id,String rut){

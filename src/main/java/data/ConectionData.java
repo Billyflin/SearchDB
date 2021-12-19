@@ -1,10 +1,12 @@
-package interfaz;
+package data;
+
+import interfaz.Conection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
-public abstract class ConectionData implements Conection{
+public abstract class ConectionData implements Conection {
     String DB_URL;
     String USER;
     String PASS;

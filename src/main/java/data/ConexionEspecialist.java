@@ -1,6 +1,5 @@
 package data;
 
-import interfaz.ConectionData;
 import model.Hora;
 
 import java.sql.DriverManager;

@@ -1,6 +1,5 @@
 package data;
 
-import interfaz.ConectionData;
 import model.Paciente;
 
 import java.sql.*;

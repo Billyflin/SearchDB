@@ -1,13 +1,8 @@
 package data;
 
-import interfaz.ConectionData;
-
 import java.sql.Date;
-import java.sql.SQLException;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 
 public class prueba {
    Date date;

@@ -1,4 +1,4 @@
-package service;
+package utilities;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
