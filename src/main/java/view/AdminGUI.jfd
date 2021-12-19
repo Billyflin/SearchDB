@@ -1,0 +1,155 @@
+JFDML JFormDesigner: "7.0.5.0.404" Java: "11.0.13" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {comp tabbedPane1::l:::x}"
+					"$verticalGroup": "par l {comp tabbedPane1::l:::x}"
+				} ) {
+					name: "contentPanel"
+					add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+						name: "tabbedPane1"
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq l {space :p:21:p, par l {comp label1:::p:86:p, comp label2:::p:148:p, comp label12::l:p:120:p}, space :p:18:p, par l {comp comboBox1::::86:x, comp comboBox2:::::x, comp label13::::86:x}, space :p:86:p, comp button1:::p::p, space :p:50:p}, seq t {space ::324:x, comp xButton1:::p::p, space :p:31:p, comp xButton2:::p::p, space :p:18:p}}"
+							"$verticalGroup": "par l {seq l {space :p:30:p, par b {comp label1::b:p::p, comp comboBox1::b:p::p}, space s:::p, par b {comp label12::b:p::p, comp label13::b:p::p, comp button1::b:p::p}, space ::60:x, par l {comp label2::t:p:26:p, comp comboBox2::t:p::p}, space :p:23:p, par b {comp xButton2::b:p::p, comp xButton1::b:p::p}, space :::p}}"
+						} ) {
+							name: "panel1"
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label1"
+								"text": "Usuario"
+							} )
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "comboBox1"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label2"
+								"text": "Cambiar Nivel De Acceso"
+							} )
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "comboBox2"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label12"
+								"text": "Nombre"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label13"
+								"text": "Apellido"
+							} )
+							add( new FormComponent( "org.jdesktop.swingx.JXButton" ) {
+								name: "xButton1"
+								"text": "Buscar"
+							} )
+							add( new FormComponent( "org.jdesktop.swingx.JXButton" ) {
+								name: "xButton2"
+								"text": "Ok"
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button1"
+								"text": "Eliminar Usuario"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
+							} )
+						}, new FormLayoutConstraints( null ) {
+							"title": "Administrar Nivel De Acceso"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq t {par t {seq {space :::x, comp xButton3:::p::p}, seq {space :p:18:p, par l {seq {par l {par l:l::p {comp label6::::103:x, comp label7::::103:x}, comp label8::l:p::p}, space s:::p, par l:::p {comp textField1::::114:x, comp textField2::::114:x, comp textField3::::114:x}, par l {seq {space :p:106:p, comp label4:::p:44:p, space :::p, comp label5:::p:75:p}, seq l {space u:::p, comp label11:::p:168:p}, seq t {space :::p, comp textField5:::p:219:p}}}, seq l {comp label9:::p:54:p, space s:::p, par l {seq {comp comboBox3:::p:128:p, space :p:31:p, comp label10:::p:99:p, space :::x, comp comboBox4:::p:147:p}, seq {comp checkBox1:::p:103:p, space :p:86:p, comp checkBox2:::p:104:p, space :0:0:x}}}}}}, space :p:28:p}}"
+							"$verticalGroup": "par l {seq l {space u:::p, par l {seq {par l:::p {comp label5:::::x, comp label4:::::x}, space :p:1:p, par b {comp textField1::b:p::p, comp label7::b:p::p}}, comp label11::t:p::p}, space u:::p, par b {comp label6::b:p::p, comp textField2::b:p::p, comp textField5::b:p::p}, space s:::p, par b {comp label8::b:p::p, comp textField3::b:p::p}, space u:::p, par b {comp label9::b:p::p, comp comboBox3::b:p::p, comp label10::b:p::p, comp comboBox4::b:p::p}, space u:::p, par b {comp checkBox1::b:p::p, comp checkBox2::b:p::p}, space ::9:x, comp xButton3:::p::p}}"
+						} ) {
+							name: "panel2"
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "textField1"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label4"
+								"text": "ID"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label5"
+								"text": "AAAAAAA"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label6"
+								"text": "Apellido"
+							} )
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "textField2"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label7"
+								"text": "Nombre"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label8"
+								"text": "Rut"
+							} )
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "textField3"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label9"
+								"text": "Area"
+							} )
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "comboBox3"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label10"
+								"text": "Especialidad"
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox1"
+								"text": "Isapre"
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox2"
+								"text": "Fonasa"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label11"
+								"text": "Direccion de Atencion"
+							} )
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "textField5"
+							} )
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "comboBox4"
+							} )
+							add( new FormComponent( "org.jdesktop.swingx.JXButton" ) {
+								name: "xButton3"
+								"text": "Agregar"
+							} )
+						}, new FormLayoutConstraints( null ) {
+							"title": "Agregar Personal"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq t {space ::405:x, comp xButton4:::p::p, space :p:46:p}}"
+							"$verticalGroup": "par l {seq t {space ::221:x, comp xButton4:::p::p, space :::p}}"
+						} ) {
+							name: "panel3"
+							add( new FormComponent( "org.jdesktop.swingx.JXButton" ) {
+								name: "xButton4"
+								"text": "Eliminar"
+							} )
+						}, new FormLayoutConstraints( null ) {
+							"title": "Eliminar Personal"
+						} )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 555, 345 )
+		} )
+	}
+}

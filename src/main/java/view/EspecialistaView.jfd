@@ -1,0 +1,79 @@
+JFDML JFormDesigner: "7.0.5.0.404" Java: "11.0.13" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+					name: "tabbedPane1"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq t {space :::p, comp comboBox1::::150:x, space s:::p, comp xDatePicker1:::p::p, space :::p}}"
+						"$verticalGroup": "par l {seq l {space :::p, par b {comp xDatePicker1::b:p::p, comp comboBox1::b:p::p}, space ::174:x}}"
+					} ) {
+						name: "panel1"
+						add( new FormComponent( "org.jdesktop.swingx.JXDatePicker" ) {
+							name: "xDatePicker1"
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox1"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Ver Horas"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq {par l {seq {space :p:14:p, par t:::p {comp button1:::p::p, comp label2::l:::x, comp label1::l:::x}, par l {seq {space s:::p, comp button3:::p::p, space :p:29:p, comp button2:::p::p}, seq l {space :p:55:p, par t {comp comboBox2:::p::p, comp comboBox3:::p::p}}}}, seq l {space :p:125:p, comp label3:::p:118:p}}, space ::43:x}}"
+						"$verticalGroup": "par l {seq l {space :p:31:p, par b {comp comboBox2::b:p::p, comp label1::b:p::p}, space :p:25:p, par b {comp label2::b:p::p, comp comboBox3::b:p::p}, space u:::p, comp label3:::p::p, space ::21:x, par b {comp button1::b:p::p, comp button2::b:p::p, comp button3::b:p::p}, space :p:17:p}}"
+					} ) {
+						name: "panel2"
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox2"
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox3"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label1"
+							"text": "Hora disponible"
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button1"
+							"text": "Modificar Hora"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button2"
+							"text": "Agregar"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button3"
+							"text": "Eliminar"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label2"
+							"text": "Hora Seleccionada"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label3"
+							"text": "text"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Editar horario de atencion"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

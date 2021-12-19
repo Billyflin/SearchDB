@@ -1,0 +1,126 @@
+JFDML JFormDesigner: "7.0.5.0.404" Java: "11.0.13" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tabbedPane1"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {space :0:698:x}"
+					"$verticalGroup": "par l {space :0:331:x}"
+				} ) {
+					name: "panel1"
+				}, new FormLayoutConstraints( null ) {
+					"title": "Pedir Hora"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {space :0:698:x}"
+					"$verticalGroup": "par l {space :0:331:x}"
+				} ) {
+					name: "panel2"
+				}, new FormLayoutConstraints( null ) {
+					"title": "Buscar Especialista"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:24:p, par l {seq {par l:::p {comp label4::::86:x, comp label1::::86:x, comp label2::::86:x}, space :::p, par l {seq l {par l:::p {comp label9::::145:x, comp label8::::145:x}, space :0:0:x}, seq l {comp label10:::p::p, space :::x, comp label13:::p:124:p}}, space :::p, par l {par l:::p {comp label3::::90:x, comp label7::::90:x}, comp label14:::p:87:p}, space :p:68:p}, seq t {par t {comp label12::l:::x, comp label5::l:::x, comp label6::l:::x}, par l:::p {seq {space :p:40:p, comp label11:::p:114:p}, seq l {space :::p, comp textField1:::::x}, seq l {space :::p, comp textField2:::::x}}, space :p:133:p, par l {seq {comp checkBox1:::p:73:p, space :p:26:p, comp checkBox2:::p:82:p}, comp label15:::p:75:p, comp label16::l:p:92:p}, space :p:94:p}}}, seq t {space :::x, comp button1:::p::p, space :p:82:p}}"
+					"$verticalGroup": "par l {seq l {space :p:7:p, par b {comp label1::b:p::p, comp label3::b:p::p, comp label8::b:p::p, comp label16::b:p::p}, space s:::p, par b {comp label2::b:p::p, comp label7::b:p::p, comp label9:::p::p, comp label15::b:p::p}, space s:::p, par l {comp label4:::p::p, par b {comp label10::b:p::p, comp label14::b:p::p, comp label13::b:p::p}}, space s:::p, par l {comp label5:::p::p, comp label11:::p::p}, space s:::p, par b {comp label6::b:p::p, comp textField1::b:p::p, comp checkBox1::b:p::p, comp checkBox2::b:p::p}, space s:::p, par b {comp label12::b:p::p, comp textField2::b:p::p}, space ::41:x, comp button1:::p::p, space :p:39:p}}"
+				} ) {
+					name: "panel3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": "Nombre"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "Apellido"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "ID"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "Edad"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "Fecha de Nacimiento"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label6"
+						"text": "Correo"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label7"
+						"text": "Fecha Creacion"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label8"
+						"text": "nombre"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label9"
+						"text": "apellido"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label10"
+						"text": "edad"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label11"
+						"text": "fechanas"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField1"
+						"text": "correo"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label12"
+						"text": "Telefono"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField2"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "checkBox1"
+						"text": "Isapre"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label13"
+						"text": "Rut"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label14"
+						"text": "Rut"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "checkBox2"
+						"text": "Fonasa"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label15"
+						"text": "fechacrea"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label16"
+						"text": "id"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button1"
+						"text": "Actualizar Datos"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Perfil"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 55, 30 )
+			"size": new java.awt.Dimension( 700, 395 )
+		} )
+	}
+}
