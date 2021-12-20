@@ -123,7 +123,6 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label31"
-						"text": "text"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label32"
@@ -135,11 +134,9 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label34"
-						"text": "si"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label35"
-						"text": "no"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label36"
@@ -147,7 +144,6 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label37"
-						"text": "text"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "Buscar Especialista"

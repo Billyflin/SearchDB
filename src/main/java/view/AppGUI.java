@@ -163,6 +163,7 @@ public class AppGUI extends JFrame {
         ArrayList<String> lista=new ArrayList<>();
         for (Especialista esp:especialistas
         ) {
+            System.out.println(esp);
             if (esp.getEspecialidad().equals(selectedItem) && esp.isFonasa()==checkBox4.isSelected()&& esp.isIsapre()==checkBox3.isSelected())
             lista.add(esp.getNombre() +" "+ esp.getApellido());
         }

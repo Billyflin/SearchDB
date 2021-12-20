@@ -99,6 +99,7 @@ public class AdminGUI extends JFrame {
         servicio.createEspecialista(getData());
         label3.setText("Hecho");
         borrarCampos();
+        label5.setText(IDgen.newID());
     }
 
     private void borrarCampos() {

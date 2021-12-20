@@ -175,6 +175,7 @@ public class EspecialistaView extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Billy
         dialogPane = new JPanel();
         tabbedPane1 = new JTabbedPane();
         panel1 = new JPanel();
@@ -201,6 +202,11 @@ public class EspecialistaView extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setBackground(new Color(202, 247, 224));
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+            , 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+            dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== tabbedPane1 ========
@@ -267,9 +273,9 @@ public class EspecialistaView extends JFrame {
                     panel1.setLayout(panel1Layout);
                     panel1Layout.setHorizontalGroup(
                         panel1Layout.createParallelGroup()
-                            .addComponent(scrollPane1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
+                            .addComponent(scrollPane1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
                             .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                .addContainerGap(548, Short.MAX_VALUE)
+                                .addContainerGap(557, Short.MAX_VALUE)
                                 .addComponent(xDatePicker1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
                     );
@@ -278,7 +284,7 @@ public class EspecialistaView extends JFrame {
                             .addGroup(panel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(xDatePicker1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                                 .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
                     );
                 }
@@ -305,9 +311,6 @@ public class EspecialistaView extends JFrame {
                     //---- label2 ----
                     label2.setText("Hora Seleccionada");
 
-                    //---- label3 ----
-                    label3.setText("text");
-
                     GroupLayout panel2Layout = new GroupLayout(panel2);
                     panel2.setLayout(panel2Layout);
                     panel2Layout.setHorizontalGroup(
@@ -320,7 +323,7 @@ public class EspecialistaView extends JFrame {
                                 .addGap(139, 139, 139)
                                 .addGroup(panel2Layout.createParallelGroup()
                                     .addGroup(panel2Layout.createSequentialGroup()
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                                         .addComponent(button3)
                                         .addGap(18, 18, 18)
                                         .addComponent(button2)
@@ -332,9 +335,9 @@ public class EspecialistaView extends JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(button1))
                                             .addComponent(comboBox2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap(172, Short.MAX_VALUE))))
+                                        .addContainerGap(112, Short.MAX_VALUE))))
                             .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                                .addContainerGap(315, Short.MAX_VALUE)
+                                .addContainerGap(320, Short.MAX_VALUE)
                                 .addComponent(label3, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
                                 .addGap(236, 236, 236))
                     );
@@ -352,7 +355,7 @@ public class EspecialistaView extends JFrame {
                                     .addComponent(label2))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(label3)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                                 .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                     .addComponent(button2)
                                     .addComponent(button3))
@@ -370,6 +373,7 @@ public class EspecialistaView extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Billy
     private JPanel dialogPane;
     private JTabbedPane tabbedPane1;
     private JPanel panel1;
