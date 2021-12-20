@@ -144,9 +144,9 @@ public class AppGUI extends JFrame {
     }
 
     private void comboBox3(ActionEvent e) {
-//todo borra todo el box
         llenarLista(String.valueOf(comboBox3.getSelectedItem()));
     }
+
     private void llenarBuscador(){
         var servicio=new EspecialistService();
         var especialistas=servicio.getEspecialidades();
@@ -160,22 +160,55 @@ public class AppGUI extends JFrame {
     private void llenarLista(String selectedItem) {
         var servicio=new EspecialistService();
         var especialistas=servicio.getAllEspecialistas();
-        ArrayList<Especialista> lista=new ArrayList<>();
+        ArrayList<String> lista=new ArrayList<>();
         for (Especialista esp:especialistas
         ) {
-            if (esp.getEspecialidad().equals(selectedItem) )
-            lista.add(esp);
+            if (esp.getEspecialidad().equals(selectedItem) && esp.isFonasa()==checkBox4.isSelected()&& esp.isIsapre()==checkBox3.isSelected())
+            lista.add(esp.getNombre() +" "+ esp.getApellido());
         }
         System.out.println(lista);
        list1.setListData(lista.toArray());
     }
 
     private void list1ValueChanged(ListSelectionEvent e) {
-        System.out.println(e);
+        var obj=(String) list1.getSelectedValue();
+        if (obj!=null){
+            var esp=buscarEspecialistaComp(obj);
+            assert esp != null;
+            label31.setText(esp.getNombre()+" "+esp.getApellido());
+            label37.setText(esp.getDireccionAtencion());
+            label34.setText(String.valueOf(esp.isFonasa()));
+            label35.setText(String.valueOf(esp.isIsapre()));
+            System.out.println(obj);
+        }
+    }
+
+    private Especialista buscarEspecialistaComp(String obj) {
+            var service = new EspecialistService();
+            for (Especialista e:service.getAllEspecialistas()
+            ) {
+                if ((e.getNombre()+" "+e.getApellido()).equals(obj)){
+                    return e;
+                }
+            }
+            return null;
+    }
+
+    private void checkBox3(ActionEvent e) {
+        // TODO add your code here
+
+        llenarLista(String.valueOf(comboBox3.getSelectedItem()));
+    }
+
+    private void checkBox4(ActionEvent e) {
+        // TODO add your code here
+
+        llenarLista(String.valueOf(comboBox3.getSelectedItem()));
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Billy
         tabbedPane1 = new JTabbedPane();
         panel1 = new JPanel();
         label17 = new JLabel();
@@ -305,7 +338,7 @@ public class AppGUI extends JFrame {
                                             .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
                                             .addGap(74, 74, 74)
                                             .addComponent(label18, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                                             .addComponent(xDatePicker1, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(panel1Layout.createSequentialGroup()
                                             .addGroup(panel1Layout.createParallelGroup()
@@ -325,9 +358,9 @@ public class AppGUI extends JFrame {
                                                 .addGroup(panel1Layout.createSequentialGroup()
                                                     .addGap(46, 46, 46)
                                                     .addComponent(comboBox2, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)))
-                                            .addGap(0, 200, Short.MAX_VALUE))))
+                                            .addGap(0, 187, Short.MAX_VALUE))))
                                 .addGroup(panel1Layout.createSequentialGroup()
-                                    .addContainerGap(460, Short.MAX_VALUE)
+                                    .addContainerGap(465, Short.MAX_VALUE)
                                     .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                         .addComponent(button2, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
                                         .addGroup(panel1Layout.createSequentialGroup()
@@ -384,9 +417,11 @@ public class AppGUI extends JFrame {
 
                 //---- checkBox3 ----
                 checkBox3.setText("Isapre");
+                checkBox3.addActionListener(e -> checkBox3(e));
 
                 //---- checkBox4 ----
                 checkBox4.setText("Fonasa");
+                checkBox4.addActionListener(e -> checkBox4(e));
 
                 //======== scrollPane1 ========
                 {
@@ -435,10 +470,10 @@ public class AppGUI extends JFrame {
                             .addComponent(checkBox3)
                             .addGap(54, 54, 54)
                             .addComponent(checkBox4)
-                            .addContainerGap(130, Short.MAX_VALUE))
+                            .addContainerGap(139, Short.MAX_VALUE))
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGap(44, 44, 44)
-                            .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                            .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                             .addGap(18, 18, 18)
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createSequentialGroup()
@@ -448,13 +483,13 @@ public class AppGUI extends JFrame {
                                             .addComponent(label32, GroupLayout.Alignment.TRAILING))
                                         .addComponent(label33))
                                     .addGap(34, 34, 34)
-                                    .addGroup(panel2Layout.createParallelGroup()
+                                    .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                         .addComponent(label35)
                                         .addComponent(label34)
-                                        .addComponent(label37)
-                                        .addComponent(label31, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(label31, GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                                        .addComponent(label37, GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
                                 .addComponent(label36))
-                            .addContainerGap(130, Short.MAX_VALUE))
+                            .addContainerGap(129, Short.MAX_VALUE))
                 );
                 panel2Layout.setVerticalGroup(
                     panel2Layout.createParallelGroup()
@@ -484,7 +519,7 @@ public class AppGUI extends JFrame {
                                         .addComponent(label33)
                                         .addComponent(label35)))
                                 .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap(41, Short.MAX_VALUE))
+                            .addContainerGap(70, Short.MAX_VALUE))
                 );
             }
             tabbedPane1.addTab("Buscar Especialista", panel2);
@@ -648,7 +683,7 @@ public class AppGUI extends JFrame {
                             .addGroup(panel3Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                 .addComponent(label12)
                                 .addComponent(textField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                             .addComponent(button1)
                             .addGap(39, 39, 39))
                 );
@@ -662,6 +697,7 @@ public class AppGUI extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Billy
     private JTabbedPane tabbedPane1;
     private JPanel panel1;
     private JLabel label17;
