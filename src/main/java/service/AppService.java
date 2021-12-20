@@ -31,6 +31,11 @@ public class AppService {
         }
         return null;
     }
+
+    /**
+     * @param pacienteData
+     * @return Paciente
+     */
     public Paciente create(ArrayList<String> pacienteData){
         var id=pacienteData.get(0);
         var rut = pacienteData.get(1);

@@ -16,6 +16,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class DateTimeService  {
+
+    /**
+     * @param id 
+     * @return ArrayList<Hora>
+     */
     public ArrayList<Hora> getHour(String id){
         try {
             var conexion = new ConexionEspecialist();
@@ -26,6 +31,12 @@ public class DateTimeService  {
         }
         return null;
     }
+
+    /**
+     * @param date 
+     * @param idEspecialista
+     * @return true si está disponible
+     */
    public boolean disponible(LocalDateTime date, String idEspecialista){
         try {
             var conexion = new ConexionAPP();
@@ -38,6 +49,10 @@ public class DateTimeService  {
     }
 
 
+    /**
+     * @param rs 
+     * @return ArrayList<Hora>
+     */
     public ArrayList<Hora> readResults(ResultSet rs){
         while(true){
             try {
@@ -49,6 +64,11 @@ public class DateTimeService  {
            }
         return null;
     }
+
+    /**
+     * @param id 
+     * @return ArrayList<Agenda>
+     */
     public ArrayList<Agenda> getAgendas(String id){
         try {
             var conexion= new ConexionAPP();
@@ -60,6 +80,10 @@ public class DateTimeService  {
         return null;
     }
 
+    /**
+     * @param rs 
+     * @return ArrayList<Agenda>
+     */
     public ArrayList<Agenda> horariosTomados(ResultSet rs){
         ArrayList<Agenda> array=new ArrayList<>();
         while(true){
@@ -75,6 +99,11 @@ public class DateTimeService  {
         return array;
     }
 
+    /**
+     * @param rs 
+     * @return Agenda
+     * @throws SQLException
+     */
     private Agenda crearAgenda(ResultSet rs) throws SQLException {
             var idpaciente = rs.getString("idpaciente");
             var idespecialista = rs.getString("idespecialista");
@@ -84,6 +113,9 @@ public class DateTimeService  {
 
     }
 
+    /**
+     * @return ArrayList<Time>
+     */
     public ArrayList<Time> horasPosibles(){
         ArrayList<Time> array = new ArrayList<>();
         array.add(Time.valueOf("08:00:00"));
@@ -98,6 +130,11 @@ public class DateTimeService  {
         array.add(Time.valueOf("18:00:00"));
         return array;
     }
+
+    /**
+     * @param result
+     * @return array de horas
+     */
     private ArrayList<Hora> crearHora(ResultSet result){
         ArrayList<Hora> array = new ArrayList<>();
         Time hora1 = null;
@@ -138,6 +175,10 @@ public class DateTimeService  {
 
         return array;
     }
+
+    /**
+     * @param horas 
+     */
     public void guardarHoras(ArrayList<Hora> horas){
         try {
             var conexion = new ConexionEspecialist();
@@ -147,12 +188,17 @@ public class DateTimeService  {
         }
     }
 
-    public void agendarHora(LocalDateTime of, String idpaciente, String idEspecialista) {
+    /**
+     * @param horaApedir Hora A agendar
+     * @param idpaciente id Paciente
+     * @param idEspecialista id Especialita
+     */
+    public void agendarHora(LocalDateTime horaApedir, String idpaciente, String idEspecialista) {
 
         try {
             var conexion = new ConexionAPP();
 
-            conexion.registerCorrect(of.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),idpaciente,idEspecialista);
+            conexion.registerCorrect(horaApedir.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),idpaciente,idEspecialista);
 
         } catch (SQLException e) {
             e.printStackTrace();
