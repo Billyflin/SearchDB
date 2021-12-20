@@ -282,6 +282,12 @@ public class AppGUI extends JFrame {
             //======== panel1 ========
             {
                 panel1.setBackground(new Color(221, 255, 221));
+                panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+                (0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+                .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+                .Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+                propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+                ;}});
 
                 //---- label17 ----
                 label17.setText("Solicitar Hora A");
@@ -437,26 +443,14 @@ public class AppGUI extends JFrame {
                 //---- label30 ----
                 label30.setText("Nombre");
 
-                //---- label31 ----
-                label31.setText("text");
-
                 //---- label32 ----
                 label32.setText("Fonasa");
 
                 //---- label33 ----
                 label33.setText("Isapre");
 
-                //---- label34 ----
-                label34.setText("si");
-
-                //---- label35 ----
-                label35.setText("no");
-
                 //---- label36 ----
                 label36.setText("Direccion");
-
-                //---- label37 ----
-                label37.setText("text");
 
                 GroupLayout panel2Layout = new GroupLayout(panel2);
                 panel2.setLayout(panel2Layout);

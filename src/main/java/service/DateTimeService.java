@@ -153,7 +153,7 @@ public class DateTimeService  {
         try {
             var conexion = new ConexionAPP();
 
-            conexion.registerCorrect(of.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")),idpaciente,idEspecialista);
+            conexion.registerCorrect(of.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),idpaciente,idEspecialista);
 
         } catch (SQLException e) {
             e.printStackTrace();
