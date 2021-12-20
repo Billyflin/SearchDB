@@ -84,6 +84,8 @@ public class FomularioView extends JFrame {
         textField3 = new JTextField();
 
         //======== this ========
+        setIconImage(new ImageIcon(getClass().getResource("/doctor.png")).getImage());
+        setTitle("Bienvenido!");
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -128,14 +130,9 @@ public class FomularioView extends JFrame {
                     panel1Layout.setHorizontalGroup(
                         panel1Layout.createParallelGroup()
                             .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                .addContainerGap(200, Short.MAX_VALUE)
-                                .addGroup(panel1Layout.createParallelGroup()
-                                    .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                        .addComponent(button1)
-                                        .addGap(53, 53, 53))
-                                    .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                        .addComponent(checkBox2)
-                                        .addGap(114, 114, 114))))
+                                .addContainerGap(230, Short.MAX_VALUE)
+                                .addComponent(button1)
+                                .addGap(53, 53, 53))
                             .addGroup(panel1Layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
                                 .addGroup(panel1Layout.createParallelGroup()
@@ -143,7 +140,6 @@ public class FomularioView extends JFrame {
                                         .addComponent(label1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(label2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(label3)
-                                        .addComponent(checkBox1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(label4, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(label5))
                                 .addGap(18, 18, 18)
@@ -155,6 +151,12 @@ public class FomularioView extends JFrame {
                                         .addComponent(textField4))
                                     .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(checkBox1, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+                                .addGap(84, 84, 84)
+                                .addComponent(checkBox2)
+                                .addContainerGap(84, Short.MAX_VALUE))
                     );
                     panel1Layout.setVerticalGroup(
                         panel1Layout.createParallelGroup()
@@ -179,10 +181,10 @@ public class FomularioView extends JFrame {
                                 .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                     .addComponent(label4)
                                     .addComponent(textField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addGap(4, 4, 4)
-                                .addComponent(checkBox2)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(checkBox1)
+                                .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(checkBox2)
+                                    .addComponent(checkBox1))
                                 .addGap(30, 30, 30)
                                 .addComponent(button1)
                                 .addGap(46, 46, 46))

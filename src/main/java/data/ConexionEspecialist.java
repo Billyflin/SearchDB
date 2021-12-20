@@ -31,6 +31,12 @@ public class ConexionEspecialist extends ConectionData {
         preparedStatement.setString(1, ID);
         return preparedStatement.executeQuery();
     }
+    public void createHorario(String ID) throws SQLException {
+        QUERY = " insert into horas set id=?,hora1='08:00:00'";
+        preparedStatement = connection.prepareStatement(QUERY);
+        preparedStatement.setString(1, ID);
+        preparedStatement.execute();
+    }
 
 
     public ResultSet leerEspecilidades() throws SQLException {
@@ -43,6 +49,21 @@ public class ConexionEspecialist extends ConectionData {
         QUERY = "SELECT * FROM especialistas";
         preparedStatement = connection.prepareStatement(QUERY);
         return preparedStatement.executeQuery();
+    }
+    public void guardarEspecilista(ArrayList<String> especialistasData) throws SQLException {
+        QUERY = "INSERT into especialistas VALUES (?,?,?,?,?,?,?,?,?)";
+        preparedStatement = connection.prepareStatement(QUERY);
+        preparedStatement.setString(1, especialistasData.get(0));
+        preparedStatement.setString(2, especialistasData.get(1));
+        preparedStatement.setString(3, especialistasData.get(2));
+        preparedStatement.setString(4, especialistasData.get(3));
+        preparedStatement.setString(5, especialistasData.get(4));
+        preparedStatement.setString(6, especialistasData.get(5));
+        preparedStatement.setBoolean(7, Boolean.parseBoolean(especialistasData.get(6)));
+        preparedStatement.setBoolean(8, Boolean.parseBoolean(especialistasData.get(7)));
+        preparedStatement.setString(9, especialistasData.get(8));
+        preparedStatement.execute();
+
     }
 
     public void guardarNuevasHoras(String id,ArrayList<Hora> horas) throws SQLException {
@@ -60,6 +81,20 @@ public class ConexionEspecialist extends ConectionData {
         preparedStatement.setTime(9, horas.get(8).getHora());
         preparedStatement.setTime(10, horas.get(9).getHora());
         preparedStatement.setString(11, id);
+        preparedStatement.execute();
+    }
+
+    public void delete(String id) throws SQLException {
+        QUERY= "delete from especialistas where id=?";
+        preparedStatement = connection.prepareStatement(QUERY);
+        preparedStatement.setString(1, id);
+        preparedStatement.execute();
+    }
+
+    public void deletehour(String id) throws SQLException {
+        QUERY= "delete from horas where id=?";
+        preparedStatement = connection.prepareStatement(QUERY);
+        preparedStatement.setString(1, id);
         preparedStatement.execute();
     }
 }

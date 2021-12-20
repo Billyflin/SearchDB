@@ -126,6 +126,7 @@ public class LoginView extends JFrame {
 
         //======== this ========
         setTitle("Login");
+        setIconImage(new ImageIcon(getClass().getResource("/doctor.png")).getImage());
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 

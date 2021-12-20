@@ -10,8 +10,13 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
+
+import model.Especialista;
+import model.Paciente;
 import org.jdesktop.swingx.*;
+import service.AppService;
 import service.EspecialistService;
+import service.LoginService;
 import utilities.IDgen;
 
 /**
@@ -22,16 +27,48 @@ public class AdminGUI extends JFrame {
         initComponents();
         var servicio= new EspecialistService();
         llenarNivelesDeAcceso();
-        fillEspecialist(servicio.getEspecialidades());
+        fillEspecialist(servicio.getEspecialidades(),servicio.getAreas());
+        llenaDelete();
+        llenarUsuario();
     }
 
-    private void fillEspecialist(ArrayList<String> especialidades){
+    private void fillEspecialist(ArrayList<String> especialidades, ArrayList<String> areas){
         label5.setText(IDgen.newID());
         for (String s: especialidades) {
             comboBox4.addItem(s);
         }
+        for (String s:areas
+             ) {
+            comboBox3.addItem(s);
+        }
 
     }
+    private void llenarUsuario(){
+        ArrayList<Paciente> logins =obtenerTodosPacientes();
+        for (Paciente s: logins
+             ) {
+            comboBox1.addItem(s.getId());
+        }
+
+    }
+    private Paciente selectorPaciente(String id){
+        ArrayList<Paciente> pacientes;
+        pacientes= obtenerTodosPacientes();
+        for (Paciente p:pacientes
+        ) {
+            if (p.getId().equals(id)){
+                return p;
+            }
+        }
+        pacientes.clear();
+        return null;
+    }
+
+    private ArrayList<Paciente> obtenerTodosPacientes() {
+        var service = new AppService();
+        return service.getAllPacientes();
+    }
+
     private void llenarNivelesDeAcceso(){
         comboBox2.addItem("0 - PACIENTE");
         comboBox2.addItem("1 - ESPECIALISTA");
@@ -42,19 +79,113 @@ public class AdminGUI extends JFrame {
        var servicio= new EspecialistService();
        servicio.deleteUser(comboBox1.getSelectedItem());
     }
+    private void llenaDelete(){
+        comboBox5.removeAllItems();
+        ArrayList<Especialista> especialistas;
+        especialistas=obtenerTodosEspecialistas();
+        for (Especialista e:especialistas) {
+            comboBox5.addItem(e.getId());
+        }
+        especialistas.clear();
+    }
+//
+    private ArrayList<Especialista> obtenerTodosEspecialistas(){
+        var servicio =new EspecialistService();
+        return servicio.getAllEspecialistas();
+    }
 
     private void xButton3(ActionEvent e) {
         var servicio = new EspecialistService();
         servicio.createEspecialista(getData());
+        label3.setText("Hecho");
+        borrarCampos();
+    }
+
+    private void borrarCampos() {
+        label5.setText("");
+        textField1.setText("");
+        textField2.setText("");
+        textField3.setText("");
+        textField5.setText("");
+        comboBox3.setSelectedIndex(-1);
+        comboBox4.setSelectedIndex(-1);
+        checkBox1.setSelected(false);
+        checkBox2.setSelected(false);
     }
 
     private ArrayList<String> getData() {
         ArrayList<String> array = new ArrayList<>();
+        array.add(label5.getText());
+        array.add(textField3.getText());
         array.add(textField1.getText());
         array.add(textField2.getText());
-
+        array.add((String) comboBox3.getSelectedItem());
+        array.add((String) comboBox4.getSelectedItem());
+        array.add(String.valueOf(checkBox1.isSelected()));
+        array.add(String.valueOf(checkBox2.isSelected()));
+        array.add(textField5.getText());
         return array;
     }
+
+    private void comboBox5(ActionEvent e) {
+        var obj= selectorEspecilista(String.valueOf(comboBox5.getSelectedItem()));
+        if(obj != null){
+            label15.setText(obj.getApellido());
+            label16.setText(obj.getEspecialidad());
+            label14.setText(obj.getNombre());
+        }
+    }
+    private Especialista selectorEspecilista(String id){
+        ArrayList<Especialista> especialistas= new ArrayList<>();
+        especialistas= obtenerTodosEspecialistas();
+        for (Especialista e:especialistas
+             ) {
+            if (e.getId().equals(id)){
+                return e;
+            }
+        }
+        especialistas.clear();
+        return null;
+    }
+
+    private void comboBox3(ActionEvent e) {
+        if(comboBox4.getSelectedIndex()!=-1) {
+            comboBox4.setSelectedIndex(comboBox3.getSelectedIndex());
+        }
+    }
+
+    private void comboBox4(ActionEvent e) {
+        if(comboBox3.getSelectedIndex()!=-1) {
+            comboBox3.setSelectedIndex(comboBox4.getSelectedIndex());
+        }
+    }
+
+    private void xButton4(ActionEvent e) {
+        var servicio= new EspecialistService();
+        servicio.delete(comboBox5.getSelectedItem());
+    }
+
+    private void borrarcombo5(){
+       comboBox5.removeAll();
+    }
+
+    private void button2(ActionEvent e) {
+        llenaDelete();
+    }
+
+    private void comboBox1(ActionEvent e) {
+        var obj= selectorPaciente(String.valueOf(comboBox1.getSelectedItem()));
+        if(obj != null){
+            label12.setText(obj.getNombre());
+            label13.setText(obj.getApellido());
+        }
+    }
+
+    private void xButton2(ActionEvent e) {
+        var servicio =new LoginService();
+        servicio.accessChange(String.valueOf(comboBox1.getSelectedItem()),comboBox2.getSelectedIndex());
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -68,9 +199,7 @@ public class AdminGUI extends JFrame {
         comboBox2 = new JComboBox();
         label12 = new JLabel();
         label13 = new JLabel();
-        xButton1 = new JXButton();
         xButton2 = new JXButton();
-        button1 = new JButton();
         panel2 = new JPanel();
         textField1 = new JTextField();
         label4 = new JLabel();
@@ -89,10 +218,20 @@ public class AdminGUI extends JFrame {
         textField5 = new JTextField();
         comboBox4 = new JComboBox();
         xButton3 = new JXButton();
+        label3 = new JLabel();
         panel3 = new JPanel();
         xButton4 = new JXButton();
+        comboBox5 = new JComboBox();
+        label14 = new JLabel();
+        label15 = new JLabel();
+        label16 = new JLabel();
+        label17 = new JLabel();
+        label18 = new JLabel();
+        button2 = new JButton();
 
         //======== this ========
+        setIconImage(new ImageIcon(getClass().getResource("/doctor.png")).getImage());
+        setTitle("Admin");
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -113,6 +252,9 @@ public class AdminGUI extends JFrame {
                         //---- label1 ----
                         label1.setText("Usuario");
 
+                        //---- comboBox1 ----
+                        comboBox1.addActionListener(e -> comboBox1(e));
+
                         //---- label2 ----
                         label2.setText("Cambiar Nivel De Acceso");
 
@@ -122,15 +264,9 @@ public class AdminGUI extends JFrame {
                         //---- label13 ----
                         label13.setText("Apellido");
 
-                        //---- xButton1 ----
-                        xButton1.setText("Buscar");
-
                         //---- xButton2 ----
                         xButton2.setText("Ok");
-
-                        //---- button1 ----
-                        button1.setText("Eliminar Usuario");
-                        button1.addActionListener(e -> button1(e));
+                        xButton2.addActionListener(e -> xButton2(e));
 
                         GroupLayout panel1Layout = new GroupLayout(panel1);
                         panel1.setLayout(panel1Layout);
@@ -147,13 +283,9 @@ public class AdminGUI extends JFrame {
                                         .addComponent(comboBox1, GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                                         .addComponent(comboBox2)
                                         .addComponent(label13, GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
-                                    .addGap(86, 86, 86)
-                                    .addComponent(button1)
-                                    .addGap(50, 50, 50))
+                                    .addGap(256, 256, 256))
                                 .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                    .addContainerGap(324, Short.MAX_VALUE)
-                                    .addComponent(xButton1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(31, 31, 31)
+                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(xButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18))
                         );
@@ -167,16 +299,13 @@ public class AdminGUI extends JFrame {
                                     .addGap(18, 18, 18)
                                     .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(label12)
-                                        .addComponent(label13)
-                                        .addComponent(button1))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                                        .addComponent(label13))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                                     .addGroup(panel1Layout.createParallelGroup()
                                         .addComponent(label2, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(comboBox2, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                     .addGap(23, 23, 23)
-                                    .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(xButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(xButton1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(xButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addContainerGap())
                         );
                     }
@@ -203,6 +332,9 @@ public class AdminGUI extends JFrame {
                         //---- label9 ----
                         label9.setText("Area");
 
+                        //---- comboBox3 ----
+                        comboBox3.addActionListener(e -> comboBox3(e));
+
                         //---- label10 ----
                         label10.setText("Especialidad");
 
@@ -215,9 +347,15 @@ public class AdminGUI extends JFrame {
                         //---- label11 ----
                         label11.setText("Direccion de Atencion");
 
+                        //---- comboBox4 ----
+                        comboBox4.addActionListener(e -> comboBox4(e));
+
                         //---- xButton3 ----
                         xButton3.setText("Agregar");
                         xButton3.addActionListener(e -> xButton3(e));
+
+                        //---- label3 ----
+                        label3.setForeground(new Color(51, 255, 51));
 
                         GroupLayout panel2Layout = new GroupLayout(panel2);
                         panel2.setLayout(panel2Layout);
@@ -227,6 +365,8 @@ public class AdminGUI extends JFrame {
                                     .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                         .addGroup(panel2Layout.createSequentialGroup()
                                             .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(label3)
+                                            .addGap(188, 188, 188)
                                             .addComponent(xButton3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(panel2Layout.createSequentialGroup()
                                             .addGap(18, 18, 18)
@@ -305,7 +445,9 @@ public class AdminGUI extends JFrame {
                                         .addComponent(checkBox1)
                                         .addComponent(checkBox2))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                                    .addComponent(xButton3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(xButton3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label3)))
                         );
                     }
                     tabbedPane1.addTab("Agregar Personal", panel2);
@@ -315,21 +457,82 @@ public class AdminGUI extends JFrame {
 
                         //---- xButton4 ----
                         xButton4.setText("Eliminar");
+                        xButton4.addActionListener(e -> xButton4(e));
+
+                        //---- comboBox5 ----
+                        comboBox5.addActionListener(e -> comboBox5(e));
+
+                        //---- label14 ----
+                        label14.setText("text");
+
+                        //---- label15 ----
+                        label15.setText("text");
+
+                        //---- label16 ----
+                        label16.setText("text");
+
+                        //---- label17 ----
+                        label17.setText("Especialidad");
+
+                        //---- label18 ----
+                        label18.setText("Nombre completo");
+
+                        //---- button2 ----
+                        button2.setText("Actualizar");
+                        button2.addActionListener(e -> button2(e));
 
                         GroupLayout panel3Layout = new GroupLayout(panel3);
                         panel3.setLayout(panel3Layout);
                         panel3Layout.setHorizontalGroup(
                             panel3Layout.createParallelGroup()
                                 .addGroup(GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
-                                    .addContainerGap(405, Short.MAX_VALUE)
-                                    .addComponent(xButton4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panel3Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addGroup(panel3Layout.createSequentialGroup()
+                                            .addContainerGap(235, Short.MAX_VALUE)
+                                            .addComponent(button2)
+                                            .addGap(84, 84, 84)
+                                            .addComponent(xButton4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(GroupLayout.Alignment.LEADING, panel3Layout.createSequentialGroup()
+                                            .addGap(17, 17, 17)
+                                            .addComponent(comboBox5, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(label18, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(GroupLayout.Alignment.LEADING, panel3Layout.createSequentialGroup()
+                                            .addGroup(panel3Layout.createParallelGroup()
+                                                .addGroup(panel3Layout.createSequentialGroup()
+                                                    .addGap(144, 144, 144)
+                                                    .addComponent(label14, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED))
+                                                .addGroup(GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
+                                                    .addContainerGap()
+                                                    .addComponent(label17)
+                                                    .addGap(49, 49, 49)))
+                                            .addGroup(panel3Layout.createParallelGroup()
+                                                .addComponent(label16, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(panel3Layout.createSequentialGroup()
+                                                    .addComponent(label15, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(0, 24, Short.MAX_VALUE)))))
                                     .addGap(46, 46, 46))
                         );
                         panel3Layout.setVerticalGroup(
                             panel3Layout.createParallelGroup()
                                 .addGroup(GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
-                                    .addContainerGap(221, Short.MAX_VALUE)
-                                    .addComponent(xButton4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(label18)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(panel3Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(comboBox5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label14)
+                                        .addComponent(label15))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                                    .addGroup(panel3Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(label16)
+                                        .addComponent(label17))
+                                    .addGap(68, 68, 68)
+                                    .addGroup(panel3Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(xButton4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(button2))
                                     .addContainerGap())
                         );
                     }
@@ -366,9 +569,7 @@ public class AdminGUI extends JFrame {
     private JComboBox comboBox2;
     private JLabel label12;
     private JLabel label13;
-    private JXButton xButton1;
     private JXButton xButton2;
-    private JButton button1;
     private JPanel panel2;
     private JTextField textField1;
     private JLabel label4;
@@ -387,7 +588,15 @@ public class AdminGUI extends JFrame {
     private JTextField textField5;
     private JComboBox comboBox4;
     private JXButton xButton3;
+    private JLabel label3;
     private JPanel panel3;
     private JXButton xButton4;
+    private JComboBox comboBox5;
+    private JLabel label14;
+    private JLabel label15;
+    private JLabel label16;
+    private JLabel label17;
+    private JLabel label18;
+    private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

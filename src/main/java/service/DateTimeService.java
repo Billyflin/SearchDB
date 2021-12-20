@@ -1,12 +1,18 @@
 package service;
 
+import data.ConexionAPP;
 import data.ConexionEspecialist;
+import model.Agenda;
 import model.Hora;
 import view.EspecialistaView;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class DateTimeService  {
@@ -20,6 +26,18 @@ public class DateTimeService  {
         }
         return null;
     }
+   public boolean disponible(LocalDateTime date, String idEspecialista){
+        try {
+            var conexion = new ConexionAPP();
+            LocalDate newdate = LocalDate.from(date);
+            System.out.println(conexion.consultarAgendas(  java.sql.Date.valueOf(newdate),idEspecialista));
+            return !conexion.consultarAgendas(  java.sql.Date.valueOf(newdate),idEspecialista);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     public ArrayList<Hora> readResults(ResultSet rs){
         while(true){
@@ -32,6 +50,41 @@ public class DateTimeService  {
            }
         return null;
     }
+    public ArrayList<Agenda> getAgendas(String id){
+        try {
+            var conexion= new ConexionAPP();
+            var rs=conexion.consultarHorarios(id);
+            return horariosTomados(rs);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ArrayList<Agenda> horariosTomados(ResultSet rs){
+        ArrayList<Agenda> array=new ArrayList<>();
+        while(true){
+            try {
+                if (!rs.next()){
+                    break;
+                }
+                array.add(crearAgenda(rs));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return array;
+    }
+
+    private Agenda crearAgenda(ResultSet rs) throws SQLException {
+            var idpaciente = rs.getString("idpaciente");
+            var idespecialista = rs.getString("idespecialista");
+            var date = rs.getDate("fecha").toLocalDate();
+            var time = rs.getTime("fecha").toLocalTime();
+          return new Agenda(idpaciente,idespecialista,date,time);
+
+    }
+
     public ArrayList<Time> horasPosibles(){
         ArrayList<Time> array = new ArrayList<>();
         array.add(Time.valueOf("08:00:00"));
@@ -95,4 +148,15 @@ public class DateTimeService  {
         }
     }
 
+    public void agendarHora(LocalDateTime of, String idpaciente, String idEspecialista) {
+
+        try {
+            var conexion = new ConexionAPP();
+
+            conexion.registerCorrect(of.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")),idpaciente,idEspecialista);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

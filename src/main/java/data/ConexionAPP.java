@@ -20,14 +20,21 @@ public class ConexionAPP extends ConectionData {
         connection = DriverManager.getConnection(DB_URL, USER, PASS);
         statement = connection.createStatement();
     }
+
+    public ResultSet consultarHorarios(String id) throws SQLException {
+        QUERY="SELECT * from DrSearch.horasreservadas where idespecialista=?";
+        preparedStatement = connection.prepareStatement(QUERY);
+        preparedStatement.setString(1, id);
+        return preparedStatement.executeQuery();
+    }
     public ResultSet leerTablaPacientes() throws SQLException {
-        QUERY = "SELECT * FROM PACIENTES";
+        QUERY = "SELECT * FROM DrSearch.pacientes";
         return statement.executeQuery(QUERY);
     }
 
 
     public ResultSet buscarPacientePorID(String id) throws SQLException {
-        QUERY = "SELECT * FROM PACIENTES WHERE id = ?";
+        QUERY = "SELECT * FROM DrSearch.pacientes WHERE id = ?";
         preparedStatement = connection.prepareStatement(QUERY);
         preparedStatement.setString(1, id);
         return preparedStatement.executeQuery();
@@ -81,5 +88,23 @@ public class ConexionAPP extends ConectionData {
         if (connection != null) {
             connection.close();
         }
+    }
+
+    public boolean consultarAgendas(Date date, String idEspecialista) throws SQLException {
+        QUERY = "select * from horasreservadas WHERE idespecialista = ? and fecha = ?";
+        preparedStatement = connection.prepareStatement(QUERY);
+        preparedStatement.setString(1,idEspecialista);
+        preparedStatement.setDate(2,date);
+        var rs= preparedStatement.executeQuery();
+        return rs.isBeforeFirst();
+    }
+    public void registerCorrect(String date, String id, String idEspecialista) throws SQLException {
+        QUERY = "insert into DrSearch.horasreservadas (idpaciente,idespecialista, fecha) values " +
+                "(?,?,?)" ;
+        preparedStatement = connection.prepareStatement(QUERY);
+        preparedStatement.setString(1,id);
+        preparedStatement.setString(2,idEspecialista);
+        preparedStatement.setString(3, date);
+        preparedStatement.execute();
     }
 }

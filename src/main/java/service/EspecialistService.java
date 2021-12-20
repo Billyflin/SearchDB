@@ -20,17 +20,67 @@ public class EspecialistService {
         }
         return resultArray;
     }
+    public ArrayList<String> getAreas() {
+        ArrayList<String> resultArray = new ArrayList<>();
+        try {
+            var conexion = new ConexionEspecialist();
+            var result = conexion.leerEspecilidades();
+            return getArrayAreaResult(result);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultArray;
+    }
+    private static ArrayList<String> getArrayAreaResult(ResultSet resultados) throws SQLException {
+        ArrayList<String> array = new ArrayList<>();
+        while (resultados.next()) {
+            array.add(resultados.getString("area"));
+        }
+        return array;
+    }
     public void createEspecialista(ArrayList<String> especialistaData){
-
+        try {
+            var conexion = new ConexionEspecialist();
+            var conexionlogin= new ConexionLogin();
+            conexionlogin.crearEspecilista(especialistaData.get(0),especialistaData.get(1));
+            conexion.guardarEspecilista(especialistaData);
+            conexion.createHorario(especialistaData.get(0));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
     private static ArrayList<String> getArrayResult(ResultSet resultados) throws SQLException {
         ArrayList<String> array = new ArrayList<>();
         while (resultados.next()) {
-            array.add(resultados.getString("especialidad").replaceAll(",",""));
+            array.add(resultados.getString("especialidad"));
         }
         return array;
+    }
+    public void delete(Object id){
+        deleteEspecialista(id);
+        deleteUser(id);
+        deleteHorario(id);
+    }
+
+    private void deleteHorario(Object id) {
+        try {
+            var conexion = new ConexionEspecialist();
+            conexion.deletehour
+                    ((String) id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteEspecialista(Object id){
+        try {
+            var conexion = new ConexionEspecialist();
+            conexion.delete((String) id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void deleteUser(Object id) {

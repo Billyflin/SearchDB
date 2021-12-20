@@ -30,6 +30,14 @@ public class LoginService implements Session {
         }
         return 0;
     }
+    public void accessChange(String id,int nivel){
+        try {
+            var conexion = new ConexionLogin();
+            conexion.cambiarAccess( id,nivel);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public Object sessionID(Object rut, Object pass) {

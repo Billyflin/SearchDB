@@ -1,6 +1,8 @@
 package model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Agenda {
     private String idPaciente;
@@ -11,6 +13,13 @@ public class Agenda {
         this.idPaciente = idPaciente;
         this.idEspecialista = idEspecialista;
         this.fecha = fecha;
+    }
+
+
+    public Agenda(String idpaciente, String idespecialista, LocalDate date, LocalTime time) {
+        this.idPaciente = idpaciente;
+        this.idEspecialista = idespecialista;
+        this.fecha = date.atTime(time);
     }
 
     public String getIdPaciente() {
@@ -24,6 +33,5 @@ public class Agenda {
     public LocalDateTime getFecha() {
         return fecha;
     }
-
 
 }

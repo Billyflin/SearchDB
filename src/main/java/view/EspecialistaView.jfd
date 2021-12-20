@@ -5,28 +5,100 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/doctor.png" )
+			"title": "Especialista"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				"background": new java.awt.Color( 202, 247, 224, 255 )
 				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 					name: "tabbedPane1"
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq t {space :::p, comp comboBox1::::150:x, space s:::p, comp xDatePicker1:::p::p, space :::p}}"
-						"$verticalGroup": "par l {seq l {space :::p, par b {comp xDatePicker1::b:p::p, comp comboBox1::b:p::p}, space ::174:x}}"
+						"$horizontalGroup": "par l {comp scrollPane1::t::669:x, seq t {space ::548:x, comp xDatePicker1:::p:111:p, space :::p}}"
+						"$verticalGroup": "par l {seq l {space :::p, comp xDatePicker1:::p::p, space ::88:x, comp scrollPane1:::p:97:p}}"
 					} ) {
 						name: "panel1"
 						add( new FormComponent( "org.jdesktop.swingx.JXDatePicker" ) {
 							name: "xDatePicker1"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "xDatePicker1", true ) )
 						} )
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "comboBox1"
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "scrollPane1"
+							add( new FormComponent( "javax.swing.JTable" ) {
+								name: "table1"
+								"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+									add( new java.util.Vector {
+										add( "" )
+										add( null )
+										add( null )
+										add( null )
+										add( "" )
+										add( "" )
+										add( null )
+										add( null )
+										add( null )
+										add( "" )
+									} )
+								}, new java.util.Vector {
+									add( "8AM" )
+									add( "9AM" )
+									add( "10AM" )
+									add( "11AM" )
+									add( "12PM" )
+									add( "1PM" )
+									add( "3PM" )
+									add( "4PM" )
+									add( "5PM" )
+									add( "6PM" )
+								}, new java.util.Vector {
+									add( class java.lang.String )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+								}, new java.util.Vector {
+									add( false )
+									add( false )
+									add( false )
+									add( false )
+									add( false )
+									add( false )
+									add( false )
+									add( false )
+									add( false )
+									add( false )
+								}, new java.util.Vector {
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 15, 0, false ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+								} )
+								"background": sfield java.awt.Color gray
+								"rowHeight": 50
+								"autoscrolls": false
+								"autoCreateColumnsFromModel": false
+								"updateSelectionOnSort": false
+								"verifyInputWhenFocusTarget": false
+								"selectionBackground": sfield java.awt.Color gray
+							} )
 						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": "Ver Horas"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq {par l {seq {space :p:14:p, par t:::p {comp button1:::p::p, comp label2::l:::x, comp label1::l:::x}, par l {seq {space s:::p, comp button3:::p::p, space :p:29:p, comp button2:::p::p}, seq l {space :p:55:p, par t {comp comboBox2:::p::p, comp comboBox3:::p::p}}}}, seq l {space :p:125:p, comp label3:::p:118:p}}, space ::43:x}}"
-						"$verticalGroup": "par l {seq l {space :p:31:p, par b {comp comboBox2::b:p::p, comp label1::b:p::p}, space :p:25:p, par b {comp label2::b:p::p, comp comboBox3::b:p::p}, space u:::p, comp label3:::p::p, space ::21:x, par b {comp button1::b:p::p, comp button2::b:p::p, comp button3::b:p::p}, space :p:17:p}}"
+						"$horizontalGroup": "par l {seq l {space :p:98:p, par t {comp label1:::p:114:p, comp label2:::p:114:p}, space :p:139:p, par l {seq {space ::142:x, comp button3:::p::p, space s:::p, comp button2:::p::p, space :p:74:p}, seq {par l {seq l {comp comboBox3:::p::p, space s:::p, comp button1:::p::p}, comp comboBox2:::p::p}, space ::172:x}}}, seq t {space ::315:x, comp label3:::p:118:p, space :p:236:p}}"
+						"$verticalGroup": "par l {seq l {space :p:38:p, par b {comp comboBox2::b:p::p, comp label1::b:p::p}, space :p:13:p, par b {comp button1::b:p::p, comp comboBox3::b:p::p, comp label2::b:p::p}, space :::p, comp label3:::p::p, space ::69:x, par b {comp button2::b:p::p, comp button3::b:p::p}, space :p:17:p}}"
 					} ) {
 						name: "panel2"
 						add( new FormComponent( "javax.swing.JComboBox" ) {
@@ -73,7 +145,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 700, 300 )
 		} )
 	}
 }

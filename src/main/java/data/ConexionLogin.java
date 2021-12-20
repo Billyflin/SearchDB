@@ -57,6 +57,17 @@ public class ConexionLogin extends ConectionData {
         preparedStatement.setString(1, ID);
         return preparedStatement.executeQuery();
     }
+    public void crearEspecilista(String id,String rut) throws SQLException {
+        QUERY = "INSERT INTO login(rut, pass, access,id)" +
+                " VALUES (?, 7777, 1, ?)";
+
+        preparedStatement = connection.prepareStatement(QUERY);
+
+        preparedStatement.setString(1, rut);
+        preparedStatement.setString(2, id);
+
+        preparedStatement.executeUpdate();
+    }
 
     public void insertarDato(String rut, String pass,Integer access, String id) throws SQLException {
 
@@ -82,7 +93,13 @@ public class ConexionLogin extends ConectionData {
         QUERY = "DELETE FROM login WHERE id = '"+ id+"'";
         statement.execute(QUERY);
     }
-
+    public void cambiarAccess(String id,int nivel) throws SQLException {
+        QUERY="update login set access=? where id=?";
+        preparedStatement = connection.prepareStatement(QUERY);
+        preparedStatement.setInt(1,nivel);
+        preparedStatement.setString(2, id);
+        preparedStatement.execute();
+    }
     public void cerrarConexion() throws SQLException {
 
         if (statement != null) {

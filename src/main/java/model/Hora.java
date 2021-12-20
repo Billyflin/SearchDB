@@ -20,4 +20,8 @@ public class Hora {
         return hora;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(hora);
+    }
 }
