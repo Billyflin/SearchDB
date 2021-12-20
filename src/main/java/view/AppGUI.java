@@ -164,11 +164,16 @@ public class AppGUI extends JFrame {
         for (Especialista esp:especialistas
         ) {
             System.out.println(esp);
-            if (esp.getEspecialidad().equals(selectedItem) && (esp.isFonasa()==checkBox4.isSelected()|| esp.isIsapre()==checkBox3.isSelected()))
-            lista.add(esp.getNombre() +" "+ esp.getApellido());
+            if (esp.getEspecialidad().equals(selectedItem))
+                if(buscarLista(esp))
+                lista.add(esp.getNombre() +" "+ esp.getApellido());
         }
         System.out.println(lista);
        list1.setListData(lista.toArray());
+    }
+
+    private boolean buscarLista(Especialista esp) {
+        return (esp.isFonasa()==checkBox4.isSelected())||(esp.isIsapre()==checkBox3.isSelected());
     }
 
     private void list1ValueChanged(ListSelectionEvent e) {
