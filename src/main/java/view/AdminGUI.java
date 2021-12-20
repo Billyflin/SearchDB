@@ -42,6 +42,20 @@ public class AdminGUI extends JFrame {
        var servicio= new EspecialistService();
        servicio.deleteUser(comboBox1.getSelectedItem());
     }
+
+    private void xButton3(ActionEvent e) {
+        var servicio = new EspecialistService();
+        servicio.createEspecialista(getData());
+    }
+
+    private ArrayList<String> getData() {
+        ArrayList<String> array = new ArrayList<>();
+        array.add(textField1.getText());
+        array.add(textField2.getText());
+
+        return array;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         dialogPane = new JPanel();
@@ -203,6 +217,7 @@ public class AdminGUI extends JFrame {
 
                         //---- xButton3 ----
                         xButton3.setText("Agregar");
+                        xButton3.addActionListener(e -> xButton3(e));
 
                         GroupLayout panel2Layout = new GroupLayout(panel2);
                         panel2.setLayout(panel2Layout);

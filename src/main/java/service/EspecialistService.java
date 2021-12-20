@@ -20,6 +20,9 @@ public class EspecialistService {
         }
         return resultArray;
     }
+    public void createEspecialista(ArrayList<String> especialistaData){
+
+    }
 
 
     private static ArrayList<String> getArrayResult(ResultSet resultados) throws SQLException {
