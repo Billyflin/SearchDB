@@ -43,13 +43,10 @@ public class FomularioView extends JFrame {
     }
 
     private void button1(ActionEvent e) {
-        System.out.println(notEmpty());
        if (notEmpty()){
            var service= new AppService();
            ArrayList<String> pacienteData=new ArrayList<String>();
-           System.out.println(Id);
            pacienteData.add(Id);
-           System.out.println(Rut);
            pacienteData.add(Rut);
            pacienteData.add(textField1.getText());
            pacienteData.add(textField2.getText());

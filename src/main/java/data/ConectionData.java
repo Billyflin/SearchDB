@@ -15,8 +15,3 @@ public abstract class ConectionData implements Conection {
     protected Statement statement;
     protected PreparedStatement preparedStatement;
 }
-
-//TODO
-//Implementar los métodos de la interfaz.
-//La interfaz debe tener el comportamiento que tiene tu clase que se conecta con la BBDD.
-

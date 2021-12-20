@@ -30,7 +30,6 @@ public class DateTimeService  {
         try {
             var conexion = new ConexionAPP();
             LocalDate newdate = LocalDate.from(date);
-            System.out.println(conexion.consultarAgendas(  java.sql.Date.valueOf(newdate),idEspecialista));
             return !conexion.consultarAgendas(  java.sql.Date.valueOf(newdate),idEspecialista);
         } catch (SQLException e) {
             e.printStackTrace();

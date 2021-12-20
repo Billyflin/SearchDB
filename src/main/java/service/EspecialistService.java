@@ -118,11 +118,5 @@ public class EspecialistService {
         }
         return array;
     }
-//
-//    private static String readResult(ResultSet resultados) throws SQLException {
-//        while (resultados.next()) {
-//            return resultados.getString("especialidad");
-//        }
-//        return null;
-//    }
+
 }

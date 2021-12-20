@@ -97,17 +97,6 @@ public class LoginView extends JFrame {
             }
         });
     }
-//    private int getAccessLevel(String id){
-//        ConexionLogin conexion= null;
-//        try {
-//            conexion = new ServiceLogin();
-//            var lvl= conexion.AccessLevel("CG14O7MV");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return lvl;
-//    }
-
 
 
     private void initComponents() {

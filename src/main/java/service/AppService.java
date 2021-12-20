@@ -88,23 +88,3 @@ public class AppService {
 
 }
 
-
-
-
-//    private void pantalla1() {
-//        ArrayList<String> countrys= Listas.listCountry();
-//        Collections.sort(countrys);
-//        for (String pais:countrys
-//        ) {
-//            comboBox1.addItem(pais);
-//        }
-//        button5.addActionListener(e ->  previusly());
-
-//    private void pantalla4() {
-//        BufferedImage img = null;
-//        try {
-//            img = ImageIO.read(new File("src/main/resources/anime_girl_PNG52.png"));
-//        } catch (IOException e) {
-//        }
-//        xImagePanel1.setImage(img);
-//        repaint();

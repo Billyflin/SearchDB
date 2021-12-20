@@ -22,7 +22,6 @@ public class Paciente {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public Paciente(String id,String rut, String nombre, String apellido,String fechaNacimiento, String correo,String numero, String isapre, String fonasa){
-        System.out.println(fechaNacimiento);
         LocalDate f2 = LocalDate.now();
         this.id = id;
         this.rut=rut;
